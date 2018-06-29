@@ -3,68 +3,94 @@
 
 namespace zyx {
 
+	template<class T>
 	class Vec4
 	{
 	public:
-		Vec4();
-		Vec4(int w, int x, int y, int z);
-		~Vec4();
+		Vec4<T>();
+		Vec4<T>(T x, T y, T z, T a);
+		~Vec4<T>();
 
-		int w, x, y, z;
+		T x, y, z, a;
 
 		void print() const;
 
 		// + - * / scalar
-		Vec4& add(const int& scale);
-		Vec4& minus(const int& scale);
-		Vec4& times(const int& scale);
-		Vec4& devide(const int& scale);
+		Vec4<T>& add(const float& scale);
+		Vec4<T>& minus(const float& scale);
+		Vec4<T>& times(const float& scale);
+		Vec4<T>& devide(const float& scale);
 
 		// + - * / vector
-		Vec4& add(const Vec4& other);
-		Vec4& minus(const Vec4& other);
-		Vec4& times(const Vec4& other);
-		Vec4& devide(const Vec4& other);
+		Vec4<T>& add(const Vec4<T>& other);
+		Vec4<T>& minus(const Vec4<T>& other);
+		Vec4<T>& times(const Vec4<T>& other);
+		Vec4<T>& devide(const Vec4<T>& other);
 
 		//overload oper + - * / scalar
-		friend Vec4 operator+(Vec4 origin, int scale);
-		friend Vec4 operator-(Vec4 origin, int scale);
-		friend Vec4 operator*(Vec4 origin, int scale);
-		friend Vec4 operator/(Vec4 origin, int scale);
+		template<class T>
+		friend Vec4<T> operator+(Vec4<T> origin, float scale);
+		template<class T>
+		friend Vec4<T> operator-(Vec4<T> origin, float scale);
+		template<class T>
+		friend Vec4<T> operator*(Vec4<T> origin, float scale);
+		template<class T>
+		friend Vec4<T> operator/(Vec4<T> origin, float scale);
 
 		//overload oper + - * / vector
-		friend Vec4 operator+(Vec4 left, Vec4 right);
-		friend Vec4 operator-(Vec4 left, Vec4 right);
-		friend Vec4 operator*(Vec4 left, Vec4 right);
-		friend Vec4 operator/(Vec4 left, Vec4 right);
+		template<class T>
+		friend Vec4<T> operator+(Vec4<T> left, Vec4<T> right);
+		template<class T>
+		friend Vec4<T> operator-(Vec4<T> left, Vec4<T> right);
+		template<class T>
+		friend Vec4<T> operator*(Vec4<T> left, Vec4<T> right);
+		template<class T>
+		friend Vec4<T> operator/(Vec4<T> left, Vec4<T> right);
 
 		//overload oper =
-		void operator=(const Vec4& other);
+		void operator=(const Vec4<T>& other);
 
 		//overload oper == <= >= == != < >
-		bool operator==(const Vec4& other) const;
-		bool operator!=(const Vec4& other) const;
-		bool operator>=(const Vec4& other) const;
-		bool operator<=(const Vec4& other) const;
-		bool operator>(const Vec4& other) const;
-		bool operator<(const Vec4& other) const;
+		bool operator==(const Vec4<T>& other) const;
+		bool operator!=(const Vec4<T>& other) const;
+		bool operator>=(const Vec4<T>& other) const;
+		bool operator<=(const Vec4<T>& other) const;
+		bool operator>(const Vec4<T>& other) const;
+		bool operator<(const Vec4<T>& other) const;
 
 		//overload oper += -= *= /= scalar
-		Vec4& operator+=(const int& scale);
-		Vec4& operator-=(const int& scale);
-		Vec4& operator*=(const int& scale);
-		Vec4& operator/=(const int& scale);
+		Vec4<T>& operator+=(const float& scale);
+		Vec4<T>& operator-=(const float& scale);
+		Vec4<T>& operator*=(const float& scale);
+		Vec4<T>& operator/=(const float& scale);
 
 		//overload oper += -= *= /= vector
-		Vec4& operator+=(const Vec4& other);
-		Vec4& operator-=(const Vec4& other);
-		Vec4& operator*=(const Vec4& other);
-		Vec4& operator/=(const Vec4& other);
+		Vec4<T>& operator+=(const Vec4<T>& other);
+		Vec4<T>& operator-=(const Vec4<T>& other);
+		Vec4<T>& operator*=(const Vec4<T>& other);
+		Vec4<T>& operator/=(const Vec4<T>& other);
 
 		//overload os << >>
-		friend std::ostream& operator<< (std::ostream& ostream, const Vec4& other);
-		friend std::istream& operator>> (std::istream& istream, Vec4& other);
+		template<class T>
+		friend std::ostream& operator<< (std::ostream& ostream, const Vec4<T>& other);
+		template<class T>
+		friend std::istream& operator>> (std::istream& istream, Vec4<T>& other);
+
+		int dot(const Vec4<T>& other);
+		Vec4<T>& cross(Vec4& other);
+		int magnitude();
+		int magnitudeSquare();
+		double normalizex();
+		double normalizey();
+		double normalizez();
+		double normalizea();
+		double angleTo(Vec4<T> other);
 	};
+
+	typedef Vec4<int> Vec4i;
+	typedef Vec4<float> Vec4f;
+	typedef Vec4<double> Vec4d;
+
 }
 
 

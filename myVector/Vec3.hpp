@@ -77,7 +77,7 @@ namespace zyx {
 		friend std::istream& operator>> (std::istream& istream, Vec3<T>& other);
 
 		int dot(const Vec3<T>& other);
-		Vec3<T>& cross(const Vec3<T>& other);
+		Vec3<T>& cross(Vec3& other);
 		int magnitude();
 		int magnitudeSquare();
 		double normalizex();
@@ -85,8 +85,6 @@ namespace zyx {
 		double normalizez();
 		double angleTo(Vec3<T> other);
 	};
-
-	
 
 	typedef Vec3<int> Vec3i;
 	typedef Vec3<float> Vec3f;

@@ -17,7 +17,15 @@ void compare(bool condition) {
 
 int main() {
 
+	Vec3i v1;
+	Vec3i v2(1, 2, 3);
+	Vec3i v3(9, 2, 5);
 
+ 	v1 = v2.cross(v3);
+
+	cout << v2.cross(v3) << endl;
+
+	/*
 	Vec3<int> v4(1.3, 2.6, 3.7);
 	Vec3<int> v5(4, 5, 6);
 	Vec3<int> v6(0, 0, 0);
@@ -45,7 +53,7 @@ int main() {
 
 	cout << "Magnitude: " << v8.magnitude() << endl;
 	cout << "Normalized: ( " << v8.normalizex() << ", " << v8.normalizey() << ", " << v8.normalizez() << " )" << endl;
-
+	*/
 	system("pause");
 	return 0;
 }
